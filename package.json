@@ -19,6 +19,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject",
+    "check-types": "tsc -p ./tsconfig.json --noEmit",
     "lint:fix": "eslint src/**/*.* --fix"
   },
   "eslintConfig": {
@@ -47,14 +48,14 @@
     "react-app-rewired": "^2.1.4"
   },
   "lint-staged": {
-    "src/**/*.{js, jsx, ts, tsx}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "npm run lint:fix",
       "git add"
     ]
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged && npm run check-types"
     }
   }
 }
